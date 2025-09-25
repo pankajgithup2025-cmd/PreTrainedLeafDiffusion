@@ -130,7 +130,8 @@ if __name__ == "__main__":
     train_model(data_dir="./data/my_leaf_dataset", epochs=50)
 
    2. generate.py (sampling new images)
-      import torch
+
+ import torch
 from torchvision.utils import save_image
 import os
 
