@@ -129,6 +129,55 @@ if __name__ == "__main__":
     # Example usage: put your dataset inside ./data/my_leaf_dataset
     train_model(data_dir="./data/my_leaf_dataset", epochs=50)
 
+   2. generate.py (sampling new images)
+      import torch
+from torchvision.utils import save_image
+import os
+
+# ----------------------------
+#  Load pretrained + finetuned models
+# ----------------------------
+def load_models(unet_path="finetuned_unet.pth"):
+    encoder = torch.load("encoder.pth", map_location="cpu")
+    decoder = torch.load("decoder.pth", map_location="cpu")
+    unet    = torch.load("unet.pth", map_location="cpu")
+    
+    # load fine-tuned weights into UNet
+    if os.path.exists(unet_path):
+        unet.load_state_dict(torch.load(unet_path, map_location="cpu"))
+        print("✅ Loaded fine-tuned UNet")
+    
+    return encoder, decoder, unet
+
+# ----------------------------
+#  Sampling function
+# ----------------------------
+def sample_images(num_samples=10, out_dir="generated/"):
+    os.makedirs(out_dir, exist_ok=True)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    encoder, decoder, unet = load_models()
+    unet.to(device)
+
+    with torch.no_grad():
+        for i in range(num_samples):
+            # Start from random noise in latent space
+            z = torch.randn(1, 256, 32, 32).to(device)  # adjust latent dims if needed
+
+            # Iteratively denoise (simplified 10 steps)
+            for t in range(10):
+                z = unet(z)
+
+            # Decode latent → image
+            img = decoder(z)
+            save_image(img, os.path.join(out_dir, f"sample_{i+1}.png"))
+
+    print(f"✅ Generated {num_samples} images saved in {out_dir}")
+
+if __name__ == "__main__":
+    sample_images(num_samples=20)
+
+
 
 
 If you use this pretrained model in your work, please cite this repository.
