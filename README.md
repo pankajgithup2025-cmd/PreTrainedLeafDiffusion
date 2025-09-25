@@ -59,7 +59,7 @@ Applications
 
 3.Benchmarking generative models in agriculture
 
-🔹 1. train.py (fine-tuning)
+Step1: Training and Finetunning
 
 import torch
 import torch.nn as nn
@@ -72,14 +72,11 @@ import os
 #  Dataset Loader (example: folder with leaf images)
 # ----------------------------
 def get_dataloader(data_dir, img_size=512, batch_size=8):
-    transform = transforms.Compose([
-        transforms.Resize((img_size, img_size)),
-        transforms.ToTensor()
-    ])
+    transform = transforms.Compose([transforms.Resize((img_size, img_size)),transforms.ToTensor()])
     dataset = datasets.ImageFolder(data_dir, transform=transform)
     return DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-# ----------------------------
+
 #  Load pretrained components
 # ----------------------------
 def load_models():
@@ -88,7 +85,7 @@ def load_models():
     unet    = torch.load("unet.pth", map_location="cpu")
     return encoder, decoder, unet
 
-# ----------------------------
+
 #  Training loop (simplified)
 # ----------------------------
 def train_model(data_dir, epochs=100, lr=1e-5, save_path="finetuned_unet.pth"):
@@ -128,11 +125,12 @@ def train_model(data_dir, epochs=100, lr=1e-5, save_path="finetuned_unet.pth"):
 if __name__ == "__main__":
     # Example usage: put your dataset inside ./data/my_leaf_dataset
     train_model(data_dir="./data/my_leaf_dataset", epochs=50)
-
-   2. generate.py (sampling new images)
+====================================================================
+Step2:Image Generation
 
  import torch
-from torchvision.utils import save_image
+from torchvision.utils
+import save_image
 import os
 
 # ----------------------------
