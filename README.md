@@ -53,7 +53,8 @@ save_images(images, "augmented/")
 
 Applications
 
-1.Data augmentation for plant disease classification
+1.Data augmentation for plant disease classification 
+
 2.Extending limited datasets into large-scale datasets
 3.Benchmarking generative models in agriculture
 
