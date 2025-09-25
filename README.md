@@ -121,10 +121,11 @@ def train_model(data_dir, epochs=100, lr=1e-5, save_path="finetuned_unet.pth"):
 
     torch.save(unet.state_dict(), save_path)
     print(f"✅ Fine-tuned UNet saved at {save_path}")
-
-if __name__ == "__main__":
+    if __name__ == "__main__":
     # Example usage: put your dataset inside ./data/my_leaf_dataset
     train_model(data_dir="./data/my_leaf_dataset", epochs=50)
+
+    
 ====================================================================
 Step2:Image Generation
 
