@@ -10,6 +10,7 @@ Our pretrained model folder consists of:
 - encoder.pth  
 - decoder.pth  
 - unet.pth
+
 encoder.pth → Compresses input leaf images into a smaller latent representation, making training and generation efficient. It reduces large pixel data into compact feature maps.
 decoder.pth → Reconstructs latent features back into full-resolution leaf images. It converts the UNet’s denoised outputs into realistic images.
 unet.pth → The core diffusion model that removes noise step by step in the latent space. It learns the structure of leaf images to generate new ones.
