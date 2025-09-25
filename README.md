@@ -88,38 +88,27 @@ def load_models():
 # ----------------------------
 def train_model(data_dir, epochs=100, lr=1e-5, save_path="finetuned_unet.pth"):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
     encoder, decoder, unet = load_models()
     unet.to(device)
-
     dataloader = get_dataloader(data_dir)
-
     criterion = nn.MSELoss()
     optimizer = optim.Adam(unet.parameters(), lr=lr)
-
     print("🚀 Starting fine-tuning...")
-
     for epoch in range(epochs):
         for i, (images, _) in enumerate(dataloader):
             images = images.to(device)
-
             # Encode → add noise → denoise with UNet → Decode
             z = encoder(images)
             noisy_z = z + 0.1 * torch.randn_like(z)
             denoised_z = unet(noisy_z)
             recon = decoder(denoised_z)
-
             loss = criterion(recon, images)
-
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-
         print(f"Epoch [{epoch+1}/{epochs}] Loss: {loss.item():.4f}")
-
     torch.save(unet.state_dict(), save_path)
     print(f"✅ Fine-tuned UNet saved at {save_path}")
-
 if __name__ == "__main__":
     # Example usage: put your dataset inside ./data/my_leaf_dataset
     train_model(data_dir="./data/my_leaf_dataset", epochs=50)
@@ -137,13 +126,11 @@ def load_models(unet_path="finetuned_unet.pth"):
     encoder = torch.load("encoder.pth", map_location="cpu")
     decoder = torch.load("decoder.pth", map_location="cpu")
     unet    = torch.load("unet.pth", map_location="cpu")
-    
-    # load fine-tuned weights into UNet
+     # load fine-tuned weights into UNet
     if os.path.exists(unet_path):
         unet.load_state_dict(torch.load(unet_path, map_location="cpu"))
         print("✅ Loaded fine-tuned UNet")
-    
-    return encoder, decoder, unet
+        return encoder, decoder, unet
 
 # ----------------------------
 #  Sampling function
@@ -151,23 +138,18 @@ def load_models(unet_path="finetuned_unet.pth"):
 def sample_images(num_samples=10, out_dir="generated/"):
     os.makedirs(out_dir, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
     encoder, decoder, unet = load_models()
     unet.to(device)
-
     with torch.no_grad():
         for i in range(num_samples):
             # Start from random noise in latent space
             z = torch.randn(1, 256, 32, 32).to(device)  # adjust latent dims if needed
-
             # Iteratively denoise (simplified 10 steps)
             for t in range(10):
                 z = unet(z)
-
             # Decode latent → image
             img = decoder(z)
             save_image(img, os.path.join(out_dir, f"sample_{i+1}.png"))
-
     print(f"✅ Generated {num_samples} images saved in {out_dir}")
 
 if __name__ == "__main__":
