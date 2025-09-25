@@ -1,16 +1,18 @@
 # 🌱 Pretrained Latent Diffusion Models for Plant Leaf Augmentation
 
-We propose **pretrained models of Latent Diffusion** trained from scratch for mango leaf disease images.  
-These models can be used to **augment any other plant leaf datasets** by generating synthetic but realistic images.  
+We propose pretrained models of Latent Diffusion trained from scratch for mango leaf disease images.  
+These models can be used to augment any other plant leaf datasets by generating synthetic but realistic images.  
 Researchers and readers can fine-tune these pretrained models for their own datasets and generate new images.
-
----
+We provided PreHealthy which contained pretrained file for heatlhy leaves and one is diseased pretrained folder called as PreAnthracnose.
 
 📂 Pretrained Model Files
-Our pretrained model consists of:
+Our pretrained model folder consists of:
 - encoder.pth  
 - decoder.pth  
-- unet.pth  
+- unet.pth
+encoder.pth → Compresses input leaf images into a smaller latent representation, making training and generation efficient. It reduces large pixel data into compact feature maps.
+decoder.pth → Reconstructs latent features back into full-resolution leaf images. It converts the UNet’s denoised outputs into realistic images.
+unet.pth → The core diffusion model that removes noise step by step in the latent space. It learns the structure of leaf images to generate new ones.
 
 All trained up to 1000 epochs on mango leaf disease dataset.
 ---
