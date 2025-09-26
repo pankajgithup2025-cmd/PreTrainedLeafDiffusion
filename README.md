@@ -20,7 +20,8 @@ Our pretrained model folder consists of:
 4) .ipynb (Training and generation code from scratch to get actual Pretrained model after suffcient epochs)
    
    
-All trained up to 1000 epochs on mango leaf disease dataset.
+All trained up to 1000 epochs on mango leaf disease dataset. For Training (Fintuning) for healthy leaf image one can use PreHealthy pretrained model files 
+and for diseased plant leaf image one can use PreAnthracnose files.
 ---
 How to Use
 
@@ -184,7 +185,7 @@ def sample_images(num_samples=10, out_dir="generated/"):
 
     
 ----------------------------
-These pretrained model proposed in the research work titled “LeafDiffusion: Advancing Mango Leaf Disease Recognition with Latent Diffusion Models and Multi-Color Space Analysis”, published in The Visual Computer. It represents extensive research and development efforts. If you use or build upon this work, please ensure you cite this repository. Proper acknowledgment not only gives due credit to the contributors but also promotes reproducibility, transparency, and continued progress in research.
+These pretrained models proposed in the research work titled “LeafDiffusion: Advancing Mango Leaf Disease Recognition with Latent Diffusion Models and Multi-Color Space Analysis”, published in The Visual Computer. It represents extensive research and development efforts. If you use or build upon this work, please ensure you cite this repository. Proper acknowledgment not only gives due credit to the contributors but also promotes reproducibility, transparency, and continued progress in research.
 ----------------------------
 
 
