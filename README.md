@@ -3,7 +3,7 @@
 We propose pretrained models of Latent Diffusion trained from scratch for mango leaf disease images.  
 These models can be used to augment any other plant leaf datasets by generating synthetic but realistic images.  
 Researchers and readers can fine-tune these pretrained models for their own datasets and generate new images.
-We provided PreHealthy which contained pretrained file for heatlhy leaves and one is diseased pretrained folder called as PreAnthracnose.
+We provided all pretained files of six class disease leaf including Healthy.
 
 📂 Pretrained Model Files
 Our pretrained model folder consists of:
