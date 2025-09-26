@@ -161,10 +161,12 @@ def load_models(unet_path="finetuned_unet.pth"):
 #  Sampling function
 # ----------------------------
 def sample_images(num_samples=10, out_dir="generated/"):
-    os.makedirs(out_dir, exist_ok=True)
+  
+      os.makedirs(out_dir, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     encoder, decoder, unet = load_models()
     unet.to(device)
+  
     with torch.no_grad():
         for i in range(num_samples):
             # Start from random noise in latent space
@@ -176,7 +178,8 @@ def sample_images(num_samples=10, out_dir="generated/"):
             img = decoder(z)
             save_image(img, os.path.join(out_dir, f"sample_{i+1}.png"))
     print(f"✅ Generated {num_samples} images saved in {out_dir}")
-if __name__ == "__main__":
+    if __name__ == "__main__": 
+   
     sample_images(num_samples=20)
 
     
