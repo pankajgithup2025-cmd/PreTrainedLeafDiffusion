@@ -21,7 +21,7 @@ Our pretrained model folder consists of:
    
    
 All trained up to 1000 epochs on mango leaf disease dataset. For Training (Fintuning) for healthy leaf image one can use PreHealthy pretrained model files 
-and for diseased plant leaf image one can use PreAnthracnose files.
+and for diseased plant leaf image one can use any disease class pretain files.
 ---
 How to Use
 
