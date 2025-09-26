@@ -163,27 +163,23 @@ def load_models(unet_path="finetuned_unet.pth"):
 def sample_images(num_samples=10, out_dir="generated/"):
     os.makedirs(out_dir, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
     encoder, decoder, unet = load_models()
     unet.to(device)
-
     with torch.no_grad():
         for i in range(num_samples):
             # Start from random noise in latent space
             z = torch.randn(1, 256, 32, 32).to(device)  # adjust latent dims if needed
-
             # Iteratively denoise (simplified 10 steps)
             for t in range(10):
                 z = unet(z)
-
             # Decode latent → image
             img = decoder(z)
             save_image(img, os.path.join(out_dir, f"sample_{i+1}.png"))
-
     print(f"✅ Generated {num_samples} images saved in {out_dir}")
-
 if __name__ == "__main__":
     sample_images(num_samples=20)
+
+    
 ----------------------------
 This pretrained model is derived from the research titled “LeafDiffusion: Advancing Mango Leaf Disease Recognition with Latent Diffusion Models and Multi-Color Space Analysis”, published in The Visual Computer. It represents extensive research and development efforts. If you use or build upon this work, please ensure you cite this repository. Proper acknowledgment not only gives due credit to the contributors but also promotes reproducibility, transparency, and continued progress in research.
 ----------------------------
