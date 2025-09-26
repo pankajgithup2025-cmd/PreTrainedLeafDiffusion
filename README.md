@@ -185,7 +185,7 @@ def sample_images(num_samples=10, out_dir="generated/"):
 
     
 ----------------------------
-These pretrained models proposed in the research work titled “LeafDiffusion: Advancing Mango Leaf Disease Recognition with Latent Diffusion Models and Multi-Color Space Analysis”, published in The Visual Computer. It represents extensive research and development efforts. If you use or build upon this work, please ensure you cite this repository. Proper acknowledgment not only gives due credit to the contributors but also promotes reproducibility, transparency, and continued progress in research.
+These pretrained models proposed in the research work titled “LeafDiffusion: Advancing Mango Leaf Disease Recognition with Latent Diffusion Models and Multi-Color Space Analysis”, published in Journal "The Visual Computer". It represents extensive research and development efforts. If you use or build upon this work, please ensure you cite this repository. Proper acknowledgment not only gives due credit to the contributors but also promotes reproducibility, transparency, and continued progress in research.
 ----------------------------
 
 
