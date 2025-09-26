@@ -20,7 +20,7 @@ Our pretrained model folder consists of:
 4) .ipynb (Training and generation code from scratch to get actual Pretrained model after suffcient epochs)
    
    
-All trained up to 1000 epochs on mango leaf disease dataset. For Training (Fintuning) for healthy leaf image one can use PreHealthy pretrained model files 
+All trained up to 1000 epochs on mango leaf disease dataset. For Training (Finetuning) for healthy leaf image one can use PreHealthy pretrained model files 
 and for diseased plant leaf image one can use any disease class pretain files.
 ---
 How to Use
