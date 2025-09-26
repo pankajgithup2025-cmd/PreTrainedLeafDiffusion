@@ -184,7 +184,9 @@ def sample_images(num_samples=10, out_dir="generated/"):
 
 if __name__ == "__main__":
     sample_images(num_samples=20)
-
+----------------------------
+If you use this pretrained model in your work, please cite this repository
+----------------------------
 
 If you use this pretrained model in your work, please cite this repository.
 
