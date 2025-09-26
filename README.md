@@ -185,9 +185,12 @@ def sample_images(num_samples=10, out_dir="generated/"):
 if __name__ == "__main__":
     sample_images(num_samples=20)
 ----------------------------
-If you use this pretrained model in your work, please cite this repository
+This pretrained model is the result of significant research titled "LeafDiffusion: Advancing Mango Leaf Disease Recognition with Latent Diffusion Models and Multi-Color Space Analysis" 
+in Journal "The Visual Computer" and development efforts. If you incorporate it into your work, 
+please make sure to cite this repository. Proper acknowledgment not only gives credit to the contributors 
+but also helps strengthen reproducibility and transparency in research.
 ----------------------------
 
-If you use this pretrained model in your work, please cite this repository.
+
 
 
